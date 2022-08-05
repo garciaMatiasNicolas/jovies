@@ -18,6 +18,12 @@
     color: white;
 }
 
+.navFont{
+    font-family:Poppins;
+    font-weight: 400;
+    font-size: larger;
+}
+
 .fontP{
 
     font-family: Poppins;
@@ -45,6 +51,7 @@
 
 .background{
     background-color: rgba(0, 0, 0, 0.911);
+    height: 100%;
 }
 
 .navProductos{
@@ -75,4 +82,8 @@
 .columna{
     width: 33%;
     height: 100%;
+}
+
+@media(max-width:500px){
+
 }
