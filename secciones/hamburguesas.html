@@ -55,7 +55,8 @@
         <section class="d-flex justify-content-between  mt-5 ">
           <div class="columna d-flex flex-column justify-content-between align-items-center">
             <img class="imgBurguers mb-3" src="../img/arma.png" alt="">
-            <a class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#arma" href="#"><h2 class="titleFooter text-white">Arma Tu Jovie</h2></a>
+            <h2 class="titleFooter text-white">Arma Tu Jovie</h2>
+            <button type="button" class="btn btnColor btn-lg text-white" data-bs-toggle="modal" data-bs-target="#arma">Descripcion</button>
             <div class="modal fade" id="arma" tabindex="-1" aria-labelledby="armaLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
@@ -66,7 +67,27 @@
                     </div>
                     <img class="imgBurguers mb-3" src="../img/arma.png" alt="">
                   </div>
-                  <div class="modal-body" id="modal-arma"></div> 
+                  <div class="modal-body"><h2 class="fontTitle1">Armala con los toppings que quieras!</h2>
+                    <input type=text name="nombre" placeholder="Tu nombre..">
+                    <input type=text name="cantidad" placeholder="Cant. de Carnes">
+                    <div class="d-flex flex-column justify-content-between align-items-start mt-3">
+                         <label for="bebidas">Gaseosa</label>
+                         <input type=checkbox value="bebidas">
+                         <label for="bacon">Bacon</label>
+                         <input type=checkbox value="bacon">
+                         <label for="papas">Papas</label>
+                         <input type=checkbox value="papas">
+                         <label for="cebCar">Cebolla Caramelizada</label>
+                         <input type=checkbox value="cebCar">
+                         <label for="ceb">Cebolla Morada</label>
+                         <input type=checkbox value="ceb">
+                         <label for="cheddar">Cheddar</label>
+                         <input type=checkbox value="cheddar">
+                         <label for="mayo">Mayonesa</label>
+                         <input type=checkbox value="mayo">
+                         <label for="salsa">Salsa Jovie</label>
+                         <input type=checkbox value="salsa">
+                     </div></div> 
                   <div class="modal-footer">
                     <button type="button" class="btn btnColor text-white">Añadir a mi pedido</button>
                   </div>
@@ -77,73 +98,17 @@
 
           <div class="columna d-flex flex-column justify-content-between align-items-center">
             <img class="imgBurguers mb-3" src="../img/joe.png" alt="">
-            <a class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#joe" href="#"><h2 class="titleFooter text-white">Fat Joe</h2></a>
-            <div class="modal fade" id="joe" tabindex="-1" aria-labelledby="joeLabel" aria-hidden="true">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header d-flex flex-column justify-content-between">
-                    <div class="d-flex justify-content-between align-items-center w-100">
-                      <h2 class="modal-title fontTitle" id="exampleModalLabel">Fat Joe</h2>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <img class="imgBurguers mb-3" src="../img/joe.png" alt="">
-                    <p class="fontP">Ingredientes: Triple medallon de carne, cheddar, extra panceta, salsa jovie, mayonesa, cebolla caramelizada </p>
-                  </div>
-                  <div class="modal-body">
-                    <h2 class="fontTitle1">¿Quieres agregar esto a tu combo?</h2>
-                    <input type=text name="nombre" placeholder="Tu nombre..">
-                    <div class="d-flex flex-column justify-content-between align-items-start mt-3">
-                      <label for="bebidas">Gaseosa</label>
-                      <input type=checkbox value="bebidas">
-                      <label for="bacon">Extra bacon</label>
-                      <input type=checkbox value="bacon">
-                      <label for="papas">Papas</label>
-                      <input type=checkbox value="papas">
-                      <label for="cheddar">Cheddar</label>
-                      <input type=checkbox value="cheddar">
-                    </div>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btnColor text-white">Añadir a mi pedido</button>
-                  </div>
-                </div>
-              </div>
+            <h2 class="titleBurguer text-white">Fat Joe</h2>
+            <button type="button" class="btn btnColor btn-lg text-white" data-bs-toggle="modal" data-bs-target="#joe" id="ver">Descripcion</button>
+            <div class="modal fade" id="joe" tabindex="-1" aria-labelledby="burguerLabel" aria-hidden="true">   
             </div>
           </div>
 
           <div class="columna d-flex flex-column justify-content-between align-items-center">
             <img class="imgBurguers mb-3" src="../img/lovieMenu.png" alt="">
-            <a class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#lovie" href="#"><h2 class="titleFooter text-white">Fat Lovie</h2></a>
-            <div class="modal fade" id="lovie" tabindex="-1" aria-labelledby="lovieLabel" aria-hidden="true">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header d-flex flex-column justify-content-between">
-                    <div class="d-flex justify-content-between align-items-center w-100">
-                      <h2 class="modal-title fontTitle" id="exampleModalLabel">Fat Lovie</h2>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <img class="imgBurguers mb-3" src="../img/lovieMenu.png" alt="">
-                    <p class="fontP">Ingredientes: Doble medallon de carne, cheddar, panceta, salsa jovie, huevo, lechuga, tomate y cebolla morada</p>
-                  </div>
-                  <div class="modal-body">
-                    <h2 class="fontTitle1">¿Quieres agregar esto a tu combo?</h2>
-                    <input type=text name="nombre" placeholder="Tu nombre..">
-                    <div class="d-flex flex-column justify-content-between align-items-start mt-3">
-                      <label for="bebidas">Gaseosa</label>
-                      <input type=checkbox value="bebidas">
-                      <label for="bacon">Extra bacon</label>
-                      <input type=checkbox value="bacon">
-                      <label for="papas">Papas</label>
-                      <input type=checkbox value="papas">
-                      <label for="cheddar">Cheddar</label>
-                      <input type=checkbox value="cheddar">
-                    </div>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btnColor text-white">Añadir a mi pedido</button>
-                  </div>
-                </div>
-              </div>
+            <h2 class="titleBurguer text-white">Fat Lovie</h2>
+            <button type="button" class="btn btnColor btn-lg text-white" data-bs-toggle="modal" data-bs-target="#lovie" id="ver" >Descripcion</button>
+            <div class="modal fade lovie" id="lovie" tabindex="-1" aria-labelledby="burguerLabel" aria-hidden="true">   
             </div>
           </div>
         </section>
@@ -152,68 +117,63 @@
           <div class="columna d-flex flex-column justify-content-between align-items-center">
             <img class="imgBurguers mb-3" src="../img/rita.png" alt="">
             <h2 class="titleFooter text-white">Rita's (Veggie)</h2>
+            <button type="button" class="btn btnColor btn-lg text-white" data-bs-toggle="modal" data-bs-target="#rita" id="ver">Descripcion</button>
+            <div class="modal fade" id="burguer" tabindex="-1" aria-labelledby="ritaLabel" aria-hidden="true">
+            </div>
           </div>
+       
 
           <div class="columna d-flex flex-column justify-content-between align-items-center">
-            <img class="imgBurguers mb-2" src="../img/dexterino.png" alt="">
-            <a class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#dexter" href="#"><h2 class="titleFooter text-white">Dexterino</h2></a>
-            <div class="modal fade" id="dexter" tabindex="-1" aria-labelledby="dexterLabel" aria-hidden="true">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header d-flex flex-column justify-content-between">
-                    <div class="d-flex justify-content-between align-items-center w-100">
-                      <h2 class="modal-title fontTitle" id="exampleModalLabel">Dexterino</h2>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <img class="imgBurguers mb-3" src="../img/dexterino.png" alt="">
-                    <p class="fontP">Ingredientes: Doble medallon de carne, cheddar, extra panceta, salsa jovie, mayonesa, cebolla caramelizada </p>
-                  </div>
-                  <div class="modal-body">
-                    <h2 class="fontTitle1">¿Quieres agregar esto a tu combo?</h2>
-                    <input type=text name="nombre" placeholder="Tu nombre..">
-                    <div class="d-flex flex-column justify-content-between align-items-start mt-3">
-                      <label for="bebidas">Gaseosa</label>
-                      <input type=checkbox value="bebidas">
-                      <label for="bacon">Extra bacon</label>
-                      <input type=checkbox value="bacon">
-                      <label for="papas">Papas</label>
-                      <input type=checkbox value="papas">
-                      <label for="cheddar">Cheddar</label>
-                      <input type=checkbox value="cheddar">
-                    </div>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btnColor text-white">Añadir a mi pedido</button>
-                  </div>
-                </div>
-              </div>
+            <img class="imgBurguers mb-3" src="../img/dexterino.png" alt="">
+            <h2 class="titleBurguer text-white">Dexterino</h2>
+            <button type="button" class="btn btnColor btn-lg text-white" data-bs-toggle="modal" data-bs-target="#dexterino" id="ver">Descripcion</button>
+            <div class="modal fade dexterino" id="dexterino" tabindex="-1" aria-labelledby="burguerLabel" aria-hidden="true">   
             </div>
           </div>
 
           <div class="columna d-flex flex-column justify-content-between align-items-center">
             <img class="imgBurguers mb-3" src="../img/harrison.png" alt="">
-            <h2 class="titleFooter text-white">Harrison (Kids)</h2>
+            <h2 class="titleBurguer text-white">Harrison (Kids)</h2>
+            <button type="button" class="btn btnColor btn-lg text-white" data-bs-toggle="modal" data-bs-target="#harrison" id="ver">Descripcion</button>
+            <div class="modal fade" id="harrison" tabindex="-1" aria-labelledby="burguerLabel" aria-hidden="true">   
+            </div>
           </div>
         </section>
 
         <section class="d-flex justify-content-between mt-5 mb-5">
           <div class="columna d-flex flex-column justify-content-between align-items-center">
             <img class="imgBurguers mb-3" src="../img/fatist.png" alt="">
-            <h2 class="titleFooter text-white">Fatist</h2>
+            <h2 class="titleBurguer text-white">Fatista</h2>
+            <button type="button" class="btn btnColor btn-lg text-white" data-bs-toggle="modal" data-bs-target="#fatista" id="ver">Descripcion</button>
+            <div class="modal fade" id="fatista" tabindex="-1" aria-labelledby="burguerLabel" aria-hidden="true">   
+            </div> 
           </div>
 
           <div class="columna d-flex flex-column justify-content-between align-items-center">
             <img class="imgBurguers mb-3" src="../img/debras.png" alt="">
-            <h2 class="titleFooter text-white">Debra's</h2>
+            <h2 class="titleBurguer text-white">Debra's</h2>
+            <button type="button" class="btn btnColor btn-lg text-white" data-bs-toggle="modal" data-bs-target="#debras" id="ver">Descripcion</button>
+            <div class="modal fade" id="debras" tabindex="-1" aria-labelledby="burguerLabel" aria-hidden="true">   
+            </div>
           </div>
 
           <div class="columna d-flex flex-column justify-content-between align-items-center">
             <img class="imgBurguers mb-3" src="../img/doake.png" alt="">
-            <h2 class="titleFooter text-white">Doakes</h2>
+            <h2 class="titleBurguer text-white">Doakes</h2>
+            <button type="button" class="btn btnColor btn-lg text-white" data-bs-toggle="modal" data-bs-target="#doakes" id="ver">Descripcion</button>
+            <div class="modal fade" id="doakes" tabindex="-1" aria-labelledby="burguerLabel" aria-hidden="true">   
+            </div>
           </div>
         </section>
         
       </main>
+
+      <a class="text-decoration-none" href="pedido.html">
+        <div class="cart-container">
+          <h3 class="fontCart text-white">Mi pedido</h3>  
+          <img class="logoSize" src="../img/carrito.png" alt="">
+        </div>
+      </a>
 
       <footer class="bg-black ">
         <div class="container-fluid">
