@@ -1,5 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap');
 
+.btnAgregar{
+    background-color: black;
+}
+
+.fontModal{
+    font-family: Poppins;
+    font-weight: 400;
+    font-size: medium;
+}
+
 .fontTitle{
     font-family: Poppins;
     font-weight: 400;
@@ -27,8 +37,8 @@
 .fontP{
 
     font-family: Poppins;
-    font-weight: 200;
-
+    font-weight: 400;
+    font-size: large;
 }
 
 .imgMenu{
@@ -75,8 +85,8 @@
 }
 
 .imgBurguers{
-    width: 20rem;
-    height: 20rem;
+    width: 15rem;
+    height: 15rem;
 }
 
 .columna{
@@ -115,6 +125,13 @@ footer{
     list-style-type: none;
 }
 
+.pedidos{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+
 
 @media(min-width:1024px){
     .cart-container{
@@ -142,6 +159,11 @@ footer{
     
     .botonCart{
         display: none !important;
+    }
+
+    .imgBurguers{
+        width: 21rem;
+        height: 21rem;
     }
 
 }

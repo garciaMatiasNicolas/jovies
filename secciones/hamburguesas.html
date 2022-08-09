@@ -63,8 +63,8 @@
           </div>
         </section>
 
-        <section class="d-flex justify-content-between  mt-5 ">
-          <div class="columna d-flex flex-column justify-content-between align-items-center">
+        <section id="section" class="container-fluid d-flex justify-content-between align-items-start mt-5 w-100 flex-wrap">
+          <div class=" d-flex flex-column justify-content-between align-items-center mt-5">
             <img class="imgBurguers mb-3" src="../img/arma.png" alt="">
             <h2 class="titleFooter text-white">Arma Tu Jovie</h2>
             <button type="button" class="btn btnColor btn-lg text-white" data-bs-toggle="modal" data-bs-target="#arma">Descripcion</button>
@@ -78,10 +78,24 @@
                     </div>
                     <img class="imgBurguers mb-3" src="../img/arma.png" alt="">
                   </div>
-                  <div class="modal-body"><h2 class="fontTitle1">Armala con los toppings que quieras!</h2>
+                  <div class="modal-body">
+                    <h2 class="fontTitle1">Dejanos tus datos asi agendamos tu pedido</h2>
                     <input type=text name="nombre" placeholder="Tu nombre..">
-                    <input type=text name="cantidad" placeholder="Cant. de Carnes">
-                    <div class="d-flex flex-column justify-content-between align-items-start mt-3">
+                    <input type=text name="direccion" placeholder="Direccion">
+                    <h2 class="fontModal mt-5">Forma de pago</h2>
+                            <div class="d-flex  justify-content-evenly w-50 mt-2">
+                                <div class="d-flex flex-column justify-content-between align-items-start w-100">
+                                    <label for="efectivo">Efectivo</label>
+                                    <input type=radio value="efectivo">
+                                </div>
+                                <div class="d-flex flex-column justify-content-between align-items-start w-100">
+                                    <label for="transf">Transferencia</label>
+                                    <input type=radio value="transf">
+                                </div>
+                            </div>
+                    <div class="d-flex flex-column justify-content-between align-items-start mt-3 w-100">
+                        <h2 class="fontTitle1">Aemala con los toppings que quieras!</h2>
+                        <input type=text name="cantidad" placeholder="Cant. de Carnes">
                          <label for="bebidas">Gaseosa</label>
                          <input type=checkbox value="bebidas">
                          <label for="bacon">Bacon</label>
@@ -106,75 +120,6 @@
               </div>
             </div>
           </div>
-
-          <div class="columna d-flex flex-column justify-content-between align-items-center">
-            <img class="imgBurguers mb-3" src="../img/joe.png" alt="">
-            <h2 class="titleBurguer text-white">Fat Joe</h2>
-            <button type="button" class="btn btnColor btn-lg text-white" data-bs-toggle="modal" data-bs-target="#joe" id="ver">Descripcion</button>
-            <div class="modal fade" id="joe" tabindex="-1" aria-labelledby="burguerLabel" aria-hidden="true">   
-            </div>
-          </div>
-
-          <div class="columna d-flex flex-column justify-content-between align-items-center">
-            <img class="imgBurguers mb-3" src="../img/lovieMenu.png" alt="">
-            <h2 class="titleBurguer text-white">Fat Lovie</h2>
-            <button type="button" class="btn btnColor btn-lg text-white" data-bs-toggle="modal" data-bs-target="#lovie" id="ver" >Descripcion</button>
-            <div class="modal fade lovie" id="lovie" tabindex="-1" aria-labelledby="burguerLabel" aria-hidden="true">   
-            </div>
-          </div>
-        </section>
-
-        <section class="d-flex justify-content-between mt-5 ">
-          <div class="columna d-flex flex-column justify-content-between align-items-center">
-            <img class="imgBurguers mb-3" src="../img/rita.png" alt="">
-            <h2 class="titleFooter text-white">Rita's (Veggie)</h2>
-            <button type="button" class="btn btnColor btn-lg text-white" data-bs-toggle="modal" data-bs-target="#rita" id="ver">Descripcion</button>
-            <div class="modal fade" id="burguer" tabindex="-1" aria-labelledby="ritaLabel" aria-hidden="true">
-            </div>
-          </div>
-       
-
-          <div class="columna d-flex flex-column justify-content-between align-items-center">
-            <img class="imgBurguers mb-3" src="../img/dexterino.png" alt="">
-            <h2 class="titleBurguer text-white">Dexterino</h2>
-            <button type="button" class="btn btnColor btn-lg text-white" data-bs-toggle="modal" data-bs-target="#dexterino" id="ver">Descripcion</button>
-            <div class="modal fade dexterino" id="dexterino" tabindex="-1" aria-labelledby="burguerLabel" aria-hidden="true">   
-            </div>
-          </div>
-
-          <div class="columna d-flex flex-column justify-content-between align-items-center">
-            <img class="imgBurguers mb-3" src="../img/harrison.png" alt="">
-            <h2 class="titleBurguer text-white">Harrison (Kids)</h2>
-            <button type="button" class="btn btnColor btn-lg text-white" data-bs-toggle="modal" data-bs-target="#harrison" id="ver">Descripcion</button>
-            <div class="modal fade" id="harrison" tabindex="-1" aria-labelledby="burguerLabel" aria-hidden="true">   
-            </div>
-          </div>
-        </section>
-
-        <section class="d-flex justify-content-between mt-5 mb-5">
-          <div class="columna d-flex flex-column justify-content-between align-items-center">
-            <img class="imgBurguers mb-3" src="../img/fatist.png" alt="">
-            <h2 class="titleBurguer text-white">Fatista</h2>
-            <button type="button" class="btn btnColor btn-lg text-white" data-bs-toggle="modal" data-bs-target="#fatista" id="ver">Descripcion</button>
-            <div class="modal fade" id="fatista" tabindex="-1" aria-labelledby="burguerLabel" aria-hidden="true">   
-            </div> 
-          </div>
-
-          <div class="columna d-flex flex-column justify-content-between align-items-center">
-            <img class="imgBurguers mb-3" src="../img/debras.png" alt="">
-            <h2 class="titleBurguer text-white">Debra's</h2>
-            <button type="button" class="btn btnColor btn-lg text-white" data-bs-toggle="modal" data-bs-target="#debras" id="ver">Descripcion</button>
-            <div class="modal fade" id="debras" tabindex="-1" aria-labelledby="burguerLabel" aria-hidden="true">   
-            </div>
-          </div>
-
-          <div class="columna d-flex flex-column justify-content-between align-items-center">
-            <img class="imgBurguers mb-3" src="../img/doake.png" alt="">
-            <h2 class="titleBurguer text-white">Doakes</h2>
-            <button type="button" class="btn btnColor btn-lg text-white" data-bs-toggle="modal" data-bs-target="#doakes" id="ver">Descripcion</button>
-            <div class="modal fade" id="doakes" tabindex="-1" aria-labelledby="burguerLabel" aria-hidden="true">   
-            </div>
-          </div>
         </section>
         
       </main>
@@ -186,7 +131,7 @@
         </div>
       </a>
 
-      <footer class="bg-black ">
+      <footer class="bg-black mt-5 ">
         <div class="container-fluid">
           
           <div class="row">
@@ -254,8 +199,7 @@
           </div>
         </div>
       </footer>
-    
-    
+
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="../scripts/script.js"></script>
