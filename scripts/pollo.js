@@ -1,43 +1,26 @@
-// ARRAYS //
+const pollos = []
 
-const hamburguesas = [];
 
-// CONSTRUCTORES //
-
-class Hamburguesa {
+class Pollo {
     constructor (id, nombre, descripcion, precio, imagen){
-        this.orden = hamburguesas.length;
+        this.orden = pollos.length;
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.precio = precio;
         this.imagen = imagen;
-    } 
+    }
 }
 
-// OBJETOS (Hamburguesas) //
 
-const fatJoe = new Hamburguesa ("joe", "Fat Joe", "Ingredientes: Triple medallon de carne, cheddar, panceta, salsa jovie, mayonesa y cebolla caramelizada ", 1300, "../img/joe.png");
-hamburguesas.push(fatJoe);
-const fatLovie = new Hamburguesa ("lovie", "Fat Lovie", "Ingredientes: Doble Medallon de carne, huevo, lechuga, tomate, salsa jovie, mayonesa, panceta y cheddar", 1500, "../img/lovieMenu.png");
-hamburguesas.push(fatLovie);
-const rita = new Hamburguesa ("rita", "Rita's (Veggie)", "Ingredientes: Un medallon de soja texturizada, pepinillos, tomate. lechuga, cheddar y salsa jovie ", 1500, "../img/rita.png");
-hamburguesas.push(rita);
-const dexterino = new Hamburguesa ("dexter", "Dexterino", "Ingredientes: Doble medallon de carne, extra panceta, cheddar y salsa jovie ", 1500, "../img/dexterino.png");
-hamburguesas.push(dexterino);
-const harrison = new Hamburguesa ("harrison", "Harrison (Kids)", "Ingredientes: una hamburguesa simple con cheddar y salsa jovie ", 1500, "../img/harrison.png");
-hamburguesas.push(harrison);
-const fatista = new Hamburguesa ("fatista", "Fatista", "Ingredientes: Cuadruple medallon de carne,queso roquefort, salsa jovie, cebolla caramelizada, panceta y lechuga", 1500, "../img/fatist.png");
-hamburguesas.push(fatista);
-const debras = new Hamburguesa ("debras", "Debra 's", "Ingredientes: Un medallon de carne de 150gr, lechuga, pan con semillas, cheddar y cebolla crispy y mayonesa", 1500, "../img/debras.png");
-hamburguesas.push(debras);
-const doakes = new Hamburguesa ("doakes", "Doakes", "Ingredientes: Pan negro, un medallon de carne, lechuga, tomate, cebolla, mayonesa, salsa jovie y pepinillos ", 1500, "../img/doake.png");
-hamburguesas.push(doakes);
+const iceTruck = new Pollo ("ice", "Ice Truck bucket", "Contiene: 6 alitas, 6 pechugas y dip de salsa barbacoa", 1250, "../img/iceTruck.png");
+pollos.push(iceTruck);
+const trinity = new Pollo ("trinity", "Trinity bucket", "Contiene: 6 alitas, 3 patitas, 7 pechugas y dip de salsa jovie", 1250, "../img/trinity.png");
+pollos.push(trinity)
+console.log(pollos)
 
-// PLANTILLAS //
-
-hamburguesas.forEach((element)=> {
-    let producto = document.getElementById("sectionHamburguesas");
+pollos.forEach((element)=> {
+    let producto = document.getElementById("sectionPollos");
     let burguer = document.createElement("div");
     burguer.innerHTML=
             `<div class= " d-flex flex-column justify-content-between align-items-center mt-5">
@@ -73,7 +56,7 @@ hamburguesas.forEach((element)=> {
                                 </div>
                             </div>
                             <h2 class="fontModal mt-5">¿Desea agregar esto a su combo?</h2>
-                            <div class="d-flex  justify-content-evenly w-50 mt-2">
+                            <div class="d-flex  justify-content-evenly w-50 mt-2 mb-4">
                                 <div class="d-flex flex-column justify-content-between align-items-center w-100">
                                     <label for="bebida">Gaseosa($200)</label>
                                     <input type=checkbox value="bebida">
@@ -83,11 +66,10 @@ hamburguesas.forEach((element)=> {
                                     <input type=checkbox value="papas">
                                 </div>
                             </div>
-                            <h2 class="fontModal mt-5">Alguna observacion que quieras agregar a tu hamburguesa</h2>
+                            <h2 class="fontModal mt-5">Alguna observacion que quieras agregar a tu pollo</h2>
                             <textarea class="w-50 h-100" placeholder="Escribe aqui.."></textarea>
                         </div>
-                        <div class="modal-footer d-flex justify-content-between">
-                            <h2 class="fontModal">Total : ${element.precio}$</h2>
+                        <div class="modal-footer">
                             <button type="button" class="btns btn btnColor text-white">Añadir a mi pedido</button>
                         </div>
                     </div>
@@ -96,23 +78,3 @@ hamburguesas.forEach((element)=> {
             </div>`;
     producto.appendChild(burguer);
 })
-
-
-// BOTONES // 
-/*
-function agregar(){
-    console.log("Usted a agregado este producto a su pedido")
-}
-
-let botonesCarrito = document.getElementsByClassName("btns");
-for(let boton of botonesCarrito){
-    boton.addEventListener("click", agregar)
-}
-
-let pedidosJSON = JSON.stringify(hamburguesas);
-localStorage.setItem("array", pedidosJSON);
-    
-*/
-
-
-
