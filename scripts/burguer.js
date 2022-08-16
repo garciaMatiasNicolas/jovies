@@ -1,6 +1,7 @@
 // ARRAYS //
 
 const hamburguesas = [];
+const carrito = [];
 
 // CONSTRUCTORES //
 
@@ -34,6 +35,7 @@ hamburguesas.push(debras);
 const doakes = new Hamburguesa ("doakes", "Doakes", "Ingredientes: Pan negro, un medallon de carne, lechuga, tomate, cebolla, mayonesa, salsa jovie y pepinillos ", 1500, "../img/doake.png");
 hamburguesas.push(doakes);
 
+
 // PLANTILLAS //
 
 hamburguesas.forEach((element)=> {
@@ -42,7 +44,7 @@ hamburguesas.forEach((element)=> {
     burguer.innerHTML=
             `<div class= " d-flex flex-column justify-content-between align-items-center mt-5">
                 <img class="imgBurguers mb-3" src="${element.imagen}" alt="">
-                <h2 class="titleFooter text-white">${element.nombre}</h2>
+                <h2 class="titleFooter">${element.nombre}</h2>
                 <button type="button" class="btn btnColor btn-lg text-white" data-bs-toggle="modal" data-bs-target="#${element.id}">
                 Descripcion
                 </button>
@@ -65,54 +67,81 @@ hamburguesas.forEach((element)=> {
                             <div class="d-flex justify-content-evenly w-50 mt-2">
                                 <div class="d-flex w-50">
                                     <label for="efectivo">Efectivo</label>
-                                    <input class="ms-1" type=checkbox value="efectivo">
+                                    <input class="ms-1"  id="cash" type=checkbox value="efectivo">
                                 </div>
                                 <div class="d-flex justify-content-evenly w-50">  
                                     <label for="transf">Transferencia</label>
-                                    <input type=checkbox value="transf">
+                                    <input type=checkbox id="transf" value="transf">
                                 </div>
                             </div>
                             <h2 class="fontModal mt-5">¿Desea agregar esto a su combo?</h2>
                             <div class="d-flex  justify-content-evenly w-50 mt-2">
                                 <div class="d-flex flex-column justify-content-between align-items-center w-100">
-                                    <label for="bebida">Gaseosa($200)</label>
-                                    <input type=checkbox value="bebida">
+                                    <label for="bebidas">Gaseosa($200)</label>
+                                    <input type=checkbox id="bebidas">
                                 </div>
                                 <div class="d-flex flex-column justify-content-between align-items-center w-100">  
                                     <label for="papas">Papas($200)</label>
-                                    <input type=checkbox value="papas">
+                                    <input type=checkbox id="papas">
                                 </div>
                             </div>
                             <h2 class="fontModal mt-5">Alguna observacion que quieras agregar a tu hamburguesa</h2>
-                            <textarea class="w-50 h-100" placeholder="Escribe aqui.."></textarea>
+                            <textarea class="w-50 h-100" id="observ" placeholder="Escribe aqui.."></textarea>
                         </div>
                         <div class="modal-footer d-flex justify-content-between">
-                            <h2 class="fontModal">Total : ${element.precio}$</h2>
-                            <button type="button" class="btns btn btnColor text-white">Añadir a mi pedido</button>
+                            <h2 class="fontModal">Precio:${element.precio}$</h2>
+                            <button id="${element.id}" type="button" class="btns btn btnColor text-white" data-bs-dismiss="modal" aria-label="Close">Añadir a mi pedido</button>
                         </div>
                     </div>
                 </div>
                 </div>
             </div>`;
     producto.appendChild(burguer);
+    let btnAdd = document.getElementById(`${element.id}`);
+    btnAdd.addEventListener("click", () => {agregarCarrito(element)});
 })
+
+function agregarCarrito(elemento){
+    carrito.push(elemento)
+   
+}
 
 
 // BOTONES // 
-/*
-function agregar(){
-    console.log("Usted a agregado este producto a su pedido")
+
+let botonCarrito = document.getElementById("btnCarrito");
+botonCarrito.addEventListener("click", () => {
+    ver(carrito);
+});
+
+let bebida = document.getElementById("bebidas").value;
+let papas = document.getElementById("papas").value;
+let observaciones = document.getElementById("observ");
+
+let modalCarrito = document.getElementById("modalBody");
+
+
+function ver(array){
+    modalCarrito.innerHTML = ``
+    array.forEach((producto)=> {
+
+        modalCarrito.innerHTML = 
+        `
+        <div class="d-flex w-50 justify-content-around align-items-start">
+            <img class="imgPedidosModal mb-3" src="${producto.imagen}" alt="">
+            <div class="d-flex flex-column justify-content-between align-items-start">
+                <h2 class="fontTitle1">Producto: ${producto.nombre}</h2>
+                <h2 class="fontTitle1">Papas:${papas}</h2>
+                <h2 class="fontTitle1">Gaseosa:${bebida}</h2>
+                <h2 class="fontTitle1">Observaciones:</h2>
+                <h2 class="fontTitle1">Total: ${producto.precio}$</h2>
+            </div>       
+        </div>
+           
+        `
+    })
 }
 
-let botonesCarrito = document.getElementsByClassName("btns");
-for(let boton of botonesCarrito){
-    boton.addEventListener("click", agregar)
-}
-
-let pedidosJSON = JSON.stringify(hamburguesas);
-localStorage.setItem("array", pedidosJSON);
-    
-*/
 
 
 

@@ -89,6 +89,11 @@
     height: 15rem;
 }
 
+.imgPedidosModal{
+    width: 10rem;
+    height: 10rem;
+}
+
 .columna{
     width: 33%;
     height: 100%;
