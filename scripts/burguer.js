@@ -1,7 +1,7 @@
 // ARRAYS //
 
-const hamburguesas = [];
-const carrito = [];
+let hamburguesas = [];
+let carrito = [];
 
 // CONSTRUCTORES //
 
@@ -34,6 +34,15 @@ const debras = new Hamburguesa ("debras", "Debra 's", "Ingredientes: Un medallon
 hamburguesas.push(debras);
 const doakes = new Hamburguesa ("doakes", "Doakes", "Ingredientes: Pan negro, un medallon de carne, lechuga, tomate, cebolla, mayonesa, salsa jovie y pepinillos ", 1500, "../img/doake.png");
 hamburguesas.push(doakes);
+
+// LOCAL STORAGE // 
+
+if (localStorage.getItem("carritoCompras")){
+    carrito = JSON.parse(localStorage.getItem("carritoCompras"));
+}else{
+    console.log("Hola")
+    localStorage.setItem("carritoCompras", []);
+}
 
 
 // PLANTILLAS //
@@ -78,11 +87,11 @@ hamburguesas.forEach((element)=> {
                             <div class="d-flex  justify-content-evenly w-50 mt-2">
                                 <div class="d-flex flex-column justify-content-between align-items-center w-100">
                                     <label for="bebidas">Gaseosa($200)</label>
-                                    <input type=checkbox id="bebidas">
+                                    <input type=checkbox id="">
                                 </div>
                                 <div class="d-flex flex-column justify-content-between align-items-center w-100">  
-                                    <label for="papas">Papas($200)</label>
-                                    <input type=checkbox id="papas">
+                                    <label for="">Papas($200)</label>
+                                    <input type=checkbox id="">
                                 </div>
                             </div>
                             <h2 class="fontModal mt-5">Alguna observacion que quieras agregar a tu hamburguesa</h2>
@@ -90,20 +99,21 @@ hamburguesas.forEach((element)=> {
                         </div>
                         <div class="modal-footer d-flex justify-content-between">
                             <h2 class="fontModal">Precio:${element.precio}$</h2>
-                            <button id="${element.id}" type="button" class="btns btn btnColor text-white" data-bs-dismiss="modal" aria-label="Close">Añadir a mi pedido</button>
+                            <button id="btn-${element.id}" type="button" class="btns btn btnColor text-white" data-bs-dismiss="modal" aria-label="Close">Añadir a mi pedido</button>
                         </div>
                     </div>
                 </div>
                 </div>
             </div>`;
     producto.appendChild(burguer);
-    let btnAdd = document.getElementById(`${element.id}`);
+    let btnAdd = document.getElementById(`btn-${element.id}`);
     btnAdd.addEventListener("click", () => {agregarCarrito(element)});
 })
 
-function agregarCarrito(elemento){
-    carrito.push(elemento)
-   
+function agregarCarrito(producto){
+    carrito.push(producto)
+    console.log(carrito)
+    localStorage.setItem("carritoCompras", JSON.stringify(carrito));
 }
 
 
@@ -114,12 +124,8 @@ botonCarrito.addEventListener("click", () => {
     ver(carrito);
 });
 
-let bebida = document.getElementById("bebidas").value;
-let papas = document.getElementById("papas").value;
-let observaciones = document.getElementById("observ");
 
 let modalCarrito = document.getElementById("modalBody");
-
 
 function ver(array){
     modalCarrito.innerHTML = ``
@@ -127,18 +133,18 @@ function ver(array){
 
         modalCarrito.innerHTML = 
         `
-        <div class="d-flex w-50 justify-content-around align-items-start">
+        <div class="d-flex w-100 justify-content-around align-items-start">
             <img class="imgPedidosModal mb-3" src="${producto.imagen}" alt="">
-            <div class="d-flex flex-column justify-content-between align-items-start">
+            <div class="d-flex w-100 flex-column justify-content-between align-items-start mt-3 ms-2">
                 <h2 class="fontTitle1">Producto: ${producto.nombre}</h2>
-                <h2 class="fontTitle1">Papas:${papas}</h2>
-                <h2 class="fontTitle1">Gaseosa:${bebida}</h2>
+                <h2 class="fontTitle1">Gaseosa:</h2>
                 <h2 class="fontTitle1">Observaciones:</h2>
                 <h2 class="fontTitle1">Total: ${producto.precio}$</h2>
             </div>       
         </div>
            
         `
+
     })
 }
 

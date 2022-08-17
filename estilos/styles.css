@@ -90,8 +90,8 @@
 }
 
 .imgPedidosModal{
-    width: 10rem;
-    height: 10rem;
+    width: 8rem;
+    height: 8rem;
 }
 
 .columna{
@@ -140,6 +140,11 @@ footer{
     .imgBurguers{
         width: 21rem;
         height: 21rem;
+    }
+
+    .imgPedidosModal{
+        width: 10rem;
+        height: 10rem;
     }
 
 }
