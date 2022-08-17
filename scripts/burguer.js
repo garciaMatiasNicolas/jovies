@@ -87,11 +87,11 @@ hamburguesas.forEach((element)=> {
                             <div class="d-flex  justify-content-evenly w-50 mt-2">
                                 <div class="d-flex flex-column justify-content-between align-items-center w-100">
                                     <label for="bebidas">Gaseosa($200)</label>
-                                    <input type=checkbox id="">
+                                    <input type=checkbox id="bebida${element.id}">
                                 </div>
                                 <div class="d-flex flex-column justify-content-between align-items-center w-100">  
                                     <label for="">Papas($200)</label>
-                                    <input type=checkbox id="">
+                                    <input type=checkbox id="papa${element.id}">
                                 </div>
                             </div>
                             <h2 class="fontModal mt-5">Alguna observacion que quieras agregar a tu hamburguesa</h2>
@@ -108,7 +108,16 @@ hamburguesas.forEach((element)=> {
     producto.appendChild(burguer);
     let btnAdd = document.getElementById(`btn-${element.id}`);
     btnAdd.addEventListener("click", () => {agregarCarrito(element)});
+    let cbx3 = document.getElementById(`papa${element.id}`);
+    let cbx4 = document.getElementById(`bebida${element.id}`)
+    cbx3.addEventListener('change' , () => {
+        console.log(cbx3.checked);
+    })
+    cbx4.addEventListener('change' , () => {
+        console.log(cbx4.checked);
+    })
 })
+
 
 function agregarCarrito(producto){
     carrito.push(producto)
@@ -128,7 +137,6 @@ botonCarrito.addEventListener("click", () => {
 let modalCarrito = document.getElementById("modalBody");
 
 function ver(array){
-    modalCarrito.innerHTML = ``
     array.forEach((producto)=> {
 
         modalCarrito.innerHTML = 
