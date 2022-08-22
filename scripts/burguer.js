@@ -116,19 +116,13 @@ function ver(array){
     let modalCarrito = document.getElementById("modalBody");
     let plantilla = ``; 
     array.forEach((producto)=> {
-        let direccion = document.getElementById(`direc-${producto.id}`).value;
-        let nombre = document.getElementById(`name-${producto.id}`).value;
-        let observacion = document.getElementById(`obs-${producto.id}`).value;
+   
         plantilla+= 
         `
         <div class="d-flex w-100 justify-content-around align-items-start">
             <img class="imgPedidosModal mb-3" src="${producto.imagen}" alt="">
             <div class="d-flex w-100 flex-column justify-content-between align-items-start mt-3 ms-3">
-                <h3 class="fontTitle1">Nombre: ${nombre}</h3>
-                <h3 class="fontTitle1">Llevar a: ${direccion}</h3>
                 <h3 class="fontTitle1">Producto: ${producto.nombre}</h3>
-                <h3 class="fontTitle1">Gaseosa:</h3>
-                <h3 class="fontTitle1">Observaciones: "${observacion}"</h3>
                 <h3 class="fontTitle1">Precio: ${producto.precio}$</h3>
             </div>       
         </div>

@@ -105,7 +105,6 @@ function ver(array){
             <img class="imgPedidosModal mb-3" src="${producto.imagen}" alt="">
             <div class="d-flex w-100 flex-column justify-content-between align-items-start mt-3 ms-2">
                 <h3 class="fontTitle1">Producto: ${producto.nombre}</h3>
-                <h3 class="fontTitle1">Gaseosa:</h3>
                 <h3 class="fontTitle1">Precio: ${producto.precio}$</h3>
             </div>       
         </div>
