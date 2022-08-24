@@ -5,8 +5,8 @@ let carrito = JSON.parse(localStorage.getItem("carritoCompras")) || [] ;
 let total = document.getElementById("modal-footer");
 let modalCarrito = document.getElementById("modalBody");
 let botonCarrito = document.getElementById("btnCarrito");
-let div = document.getElementById("loader");
 let btnVaciar = document.getElementById("btnVaciar");
+let div = document.getElementById("loader");
 
 // CONSTRUCTORES //
 
@@ -32,9 +32,9 @@ const fatista = new Hamburguesa ("fatista", "Fatista", "Ingredientes: Cuadruple 
 const debras = new Hamburguesa ("debras", "Debra 's", "Ingredientes: Un medallon de carne de 150gr, lechuga, pan con semillas, cheddar y cebolla crispy y mayonesa", 1200, "../img/debras.png");
 const doakes = new Hamburguesa ("doakes", "Doakes", "Ingredientes: Pan negro, un medallon de carne, lechuga, tomate, cebolla, mayonesa, salsa jovie y pepinillos ", 1200, "../img/doake.png");
 hamburguesas.push(fatJoe, fatLovie, dexterino, harrison, fatista, rita, doakes, debras );
-
+hamburguesas.splice(1,0);
+console.log(hamburguesas)
 // PLANTILLAS //
-
 function print(){
 
     hamburguesas.forEach((element)=> {
@@ -96,25 +96,31 @@ function print(){
     })
 }
 
+
 function ver(array){
     let plantilla = ``; 
     array.forEach((producto)=> {
-        let obs = document.getElementById(`obs-${producto.id}`).value
         plantilla+= 
         `
         <div id="card${producto.id}" class="d-flex w-100 justify-content-around align-items-start border-bottom">
             <img class="imgPedidosModal mb-3" src="${producto.imagen}" alt="">
             <div class="d-flex w-100 flex-column justify-content-between align-items-start mt-3 ms-3">
                 <h3 class="fontTitle1">Producto: ${producto.nombre}</h3>
-                <h3 class="fontTitle1">Observaciones: ${obs}</h3>
                 <h3 class="fontTitle1">Precio: ${producto.precio}$</h3>
             </div>  
             <button id="delete-${producto.id}" type="button" class="btns btn bg-transparent text-white mt-4"><img class="iconT" src="../img/trashpng.png"></button>      
         </div>
         `
         modalCarrito.innerHTML = plantilla;
+        let trash = document.getElementById(`delete-${producto.id}`);
+        trash.addEventListener("click", () => {
+            let index = carrito.indexOf(producto);
+            carrito.splice(0, index);
+            console
+        })
     })
 }
+
 
 // BOTONES Y FUNCIONES// 
 
