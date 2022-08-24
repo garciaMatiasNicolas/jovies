@@ -31,9 +31,9 @@ const harrison = new Hamburguesa ("harrison", "Harrison (Kids)", "Ingredientes: 
 const fatista = new Hamburguesa ("fatista", "Fatista", "Ingredientes: Cuadruple medallon de carne,queso roquefort, salsa jovie, cebolla caramelizada, panceta y lechuga", 1400, "../img/fatist.png");
 const debras = new Hamburguesa ("debras", "Debra 's", "Ingredientes: Un medallon de carne de 150gr, lechuga, pan con semillas, cheddar y cebolla crispy y mayonesa", 1200, "../img/debras.png");
 const doakes = new Hamburguesa ("doakes", "Doakes", "Ingredientes: Pan negro, un medallon de carne, lechuga, tomate, cebolla, mayonesa, salsa jovie y pepinillos ", 1200, "../img/doake.png");
-hamburguesas.push(fatJoe, fatLovie, dexterino, harrison, fatista, rita, doakes, debras );
-hamburguesas.splice(1,0);
-console.log(hamburguesas)
+const masuka = new Hamburguesa ("masuka", "Masuka (Kids)", "Ingredientes: Pan, un medallon de pollo, lechuga, tomate, cheddar y panceta", 1500, "../img/masuka.png")
+hamburguesas.push(fatJoe, fatLovie, dexterino, harrison, fatista, rita, doakes, debras, masuka );
+
 // PLANTILLAS //
 function print(){
 
@@ -63,17 +63,17 @@ function print(){
                                 <div class="d-flex  justify-content-evenly w-50 mt-2">
                                     <div class="d-flex flex-column justify-content-between align-items-center w-100">
                                         <label for="bebidas">Gaseosa($200)</label>
-                                        <input type=checkbox id="">
+                                        <input type=checkbox id="gaseosa">
                                     </div>
                                     <div class="d-flex flex-column justify-content-between align-items-center w-100">  
                                         <label for="">Papas($200)</label>
-                                        <input type=checkbox id="">
+                                        <input type=checkbox id="papas">
                                     </div>
                                 </div>
                                 <h2 class="fontModal mt-5">Alguna observacion que quieras agregar a tu hamburguesa</h2>
                                 <textarea class="w-50 h-100" id="obs-${element.id}" placeholder="Escribe aqui.."></textarea>
                             </div>
-                            <div class="modal-footer d-flex justify-content-between">
+                            <div class="modal-footer id="modalF" d-flex justify-content-between">
                                 <h2 class="fontTitle">Precio: ${element.precio}$</h2>
                                 <button id="btn-${element.id}" type="button" class="btns btn btnColor text-white" data-bs-dismiss="modal" aria-label="Close">Añadir a mi pedido</button>
                             </div>
@@ -156,6 +156,7 @@ botonCarrito.addEventListener("click", () => {
     ver(carrito);
     sumar(carrito);
 });
+
 
 const loader = setTimeout(() => {
     div.innerHTML= "";
