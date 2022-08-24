@@ -55,6 +55,11 @@
     background-color: rgb(146, 0, 0) !important;
 }
 
+.iconT{
+    width: 2rem;
+    height: 2rem;
+}
+
 .btnColor:hover{
     border: 1px solid white;
 }
@@ -87,6 +92,15 @@
 .imgBurguers{
     width: 15rem;
     height: 15rem;
+}
+
+.imgAnimacion{
+    transition: 0.5s;
+}
+
+.imgAnimacion:hover{
+    transition: 0.5s;
+    transform: scale(1.1, 1.1);
 }
 
 .imgPedidosModal{

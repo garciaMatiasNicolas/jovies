@@ -1,7 +1,10 @@
-// ARRAYS //
+// ARRAYS Y VARIABLES //
 
 let pollos = [];
 let carrito = JSON.parse(localStorage.getItem("carritoCompras")) || [] ;
+let botonCarrito = document.getElementById("btnCarrito1");
+let total = document.getElementById("modal-footer1");
+let btnVaciar = document.getElementById("btnVaciar2");
 
 // CONSTRUCTORES //
 
@@ -20,18 +23,19 @@ class Pollo {
 
 const iceTruck = new Pollo ("ice", "Ice Truck bucket", "Contiene: 6 alitas, 6 pechugas y dip de salsa barbacoa", 1250, "../img/iceTruck.png");
 const trinity = new Pollo ("trinity", "Trinity bucket", "Contiene: 6 alitas, 3 patitas, 7 pechugas y dip de salsa jovie", 1250, "../img/trinity.png");
-pollos.push(trinity, iceTruck)
-
+const tray = new Pollo ("dooms", "Dooms Day Tray",  "Contiene:  2 patitas y 2 pechugas mas dos panes para acompañar", 750, "../img/trayPollo2.png")
+pollos.push(trinity, iceTruck, tray)
+console.log(pollos)
 
 // PLANTILLAS //
 
 function imprimir(){
     pollos.forEach((element)=> {
         let producto = document.getElementById("sectionPollos");
-        let burguer = document.createElement("div");
-        burguer.innerHTML=
-                `<div class= " d-flex flex-column justify-content-between align-items-center mt-5">
-                    <img class="imgBurguers mb-3" src="${element.imagen}" alt="">
+        let pollo = document.createElement("div");
+        pollo.innerHTML=
+                `<div class= " d-flex flex-column justify-content-between align-items-center mt-5 animacion">
+                    <img class="imgBurguers imgAnimacion mb-3" src="${element.imagen}" alt="">
                     <h2 class="titleFooter text-white">${element.nombre}</h2>
                     <button type="button" class="btn btnColor btn-lg text-white" data-bs-toggle="modal" data-bs-target="#${element.id}">
                     Descripcion
@@ -48,21 +52,7 @@ function imprimir(){
                                 <p class="fontP">${element.descripcion}</p>
                             </div>
                             <div class="modal-body">
-                                <h2 class="fontTitle1">Dejanos tus datos asi agendamos tu pedido</h2>
-                                <input type=text name="nombre" id="name-${element.id}" placeholder="Tu nombre..">
-                                <input type=text name="direccion" id="direc-${element.id}" placeholder="Direccion">
-                                <h2 class="fontModal mt-5">Forma de pago</h2>
-                                <div class="d-flex justify-content-evenly w-50 mt-2">
-                                    <div class="d-flex w-50">
-                                        <label for="efectivo">Efectivo</label>
-                                        <input class="ms-1" type=checkbox value="efectivo">
-                                    </div>
-                                    <div class="d-flex justify-content-evenly w-50">  
-                                        <label for="transf">Transferencia</label>
-                                        <input type=checkbox value="transf">
-                                    </div>
-                                </div>
-                                <h2 class="fontModal mt-5">¿Desea agregar esto a su combo?</h2>
+                                <h2 class="fontModal">¿Desea agregar esto a su combo?</h2>
                                 <div class="d-flex  justify-content-evenly w-50 mt-2 mb-4">
                                     <div class="d-flex flex-column justify-content-between align-items-center w-100">
                                         <label for="bebida">Gaseosa($200)</label>
@@ -83,30 +73,38 @@ function imprimir(){
                     </div>
                     </div>
                 </div>`;
-        producto.appendChild(burguer);
+        producto.appendChild(pollo);
         let btnCartP = document.getElementById(`btn-${element.id}`);
-        btnCartP.addEventListener("click",() =>  {agregarCarrito(element)})
+        btnCartP.addEventListener("click",() =>  {
+            agregarCarrito(element)
+            Toastify({
+                text: `${element.nombre} agregado`,
+                duration: 1500,
+                style: {
+                    background: "black",
+                  }
+                }).showToast();
+        })
     })
 }
 
-function agregarCarrito(producto){
-    carrito.push(producto)
-    console.log(carrito)
-    localStorage.setItem("carritoCompras", JSON.stringify(carrito));
-}
-
+let modalCarrito = document.getElementById("modalBody2");
 function ver(array){
-    let modalCarrito = document.getElementById("modalBody2");
+    
     let plantilla = ``; 
+    
     array.forEach((producto)=> {
+        let obs = document.getElementById(`obs-${producto.id}`).value
         plantilla += 
         `
-        <div class="d-flex w-100 justify-content-around align-items-start">
-            <img class="imgPedidosModal mb-3" src="${producto.imagen}" alt="">
-            <div class="d-flex w-100 flex-column justify-content-between align-items-start mt-3 ms-2">
-                <h3 class="fontTitle1">Producto: ${producto.nombre}</h3>
-                <h3 class="fontTitle1">Precio: ${producto.precio}$</h3>
-            </div>       
+        <div class="d-flex w-100 justify-content-around align-items-start border-bottom">
+        <img class="imgPedidosModal mb-3" src="${producto.imagen}" alt="">
+        <div class="d-flex w-100 flex-column justify-content-between align-items-start mt-3 ms-2">
+        <h3 class="fontTitle1">Producto: ${producto.nombre}</h3>
+        <h3 class="fontTitle1">Observaciones: ${obs}</h3>
+        <h3 class="fontTitle1">Precio: ${producto.precio}$</h3>
+        </div>
+        <button id="delete-${producto.id}" type="button" class="btns btn bg-transparent text-white mt-4"><img class="iconT" src="../img/trashpng.png"></button>          
         </div>
         `
         modalCarrito.innerHTML = plantilla;
@@ -115,23 +113,37 @@ function ver(array){
 
 // BOTONES Y FUNCIONES //
 
-let botonCarrito = document.getElementById("btnCarrito1");
 botonCarrito.addEventListener("click", () => {
     ver(carrito);
-});
-botonCarrito.addEventListener("click", () => {
     sumar(carrito);
+});
+
+btnVaciar.addEventListener("click", ()=> {
+    carrito.splice(0, carrito.length);
+    localStorage.removeItem("carritoCompras")
+    ver(carrito)
 })
 
-let total = document.getElementById("modal-footer1");
+function agregarCarrito(producto){
+    carrito.push(producto)
+    localStorage.setItem("carritoCompras", JSON.stringify(carrito));
+}
+
+function carritoVacio(){
+    modalCarrito.innerHTML = `<h3 class="fontTitle1">No has seleccionado ningun producto</h3>`
+}
 
 function sumar(array){
     let acum = 0
     array.forEach((producto => {
         acum += (producto.precio)
-        total.innerHTML = `  <div> <h3 class="fontTitle">Total: ${acum}$ </div>
-                             <button type="button" class="btn btnColor text-white" data-bs-dismiss="modal">Pedir</button>`;
     }))
+    let div = document.createElement("div");
+    div.innerHTML = 
+    `<div class="w-100 d-flex justify-content-between align-items-center">
+        <div class="mt-3"> <h3 class="fontTitle">Total: ${acum}$ </div>
+    </div>`
+    acum === 0 ? carritoVacio() :  modalCarrito.appendChild(div);
 }
 
 imprimir();
