@@ -6,6 +6,7 @@ let total = document.getElementById("modal-footer");
 let modalCarrito = document.getElementById("modalBody");
 let botonCarrito = document.getElementById("btnCarrito");
 let btnVaciar = document.getElementById("btnVaciar");
+let btnPedir = document.getElementById("btnEnd");
 let div = document.getElementById("loader");
 
 // CONSTRUCTORES //
@@ -73,7 +74,7 @@ function print(){
                                 <h2 class="fontModal mt-5">Alguna observacion que quieras agregar a tu hamburguesa</h2>
                                 <textarea class="w-50 h-100" id="obs-${element.id}" placeholder="Escribe aqui.."></textarea>
                             </div>
-                            <div class="modal-footer id="modalF" d-flex justify-content-between">
+                            <div class="modal-footer d-flex justify-content-between" id="modalF">
                                 <h2 class="fontTitle">Precio: ${element.precio}$</h2>
                                 <button id="btn-${element.id}" type="button" class="btns btn btnColor text-white" data-bs-dismiss="modal" aria-label="Close">Añadir a mi pedido</button>
                             </div>
@@ -156,6 +157,39 @@ botonCarrito.addEventListener("click", () => {
     ver(carrito);
     sumar(carrito);
 });
+
+btnPedir.addEventListener("click", ()=> {
+    Swal.fire({
+        title: 'Dejanos tus datos',
+        text: "Nos estaremos comunicando con vos para darte el status de tu pedido",
+        icon: 'question',
+        input: "text",
+        inputLabel: "Tu nombre y apellido",
+        confirmButtonColor: ' #ff0000',
+        confirmButtonText: 'Enviar'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire({
+            input: "text",
+            inputLabel: "Tu numero de telefono",
+            confirmButtonText: 'Enviar',
+            icon: 'question',
+        }).then((result2)=> {
+            if (result2.isConfirmed){
+                Swal.fire({
+                    title:"Gracias por comprar en Jovies",
+                    text: "Tu compra ha sido confirmada, nos estaremos comunicando con vos para darte el status de tu pedido",
+                    icon:"success",
+                    confirmButtonColor: ' #ff0000',
+                })
+                carrito.splice(0, carrito.length);
+                localStorage.removeItem("carritoCompras")
+                ver(carrito)
+            }
+        })
+        }
+      })
+})
 
 const loader = setTimeout(() => {
     div.innerHTML= "";
