@@ -157,7 +157,6 @@ botonCarrito.addEventListener("click", () => {
     sumar(carrito);
 });
 
-
 const loader = setTimeout(() => {
     div.innerHTML= "";
 }, 1000)

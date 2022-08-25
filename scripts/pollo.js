@@ -219,7 +219,7 @@ function sumar(array){
 let acum = 0
 
 function reiniciar(){
-    let acum = 0
+    acum = 0
     let footer = document.getElementById("footerArma"); 
     footer.innerHTML =`<h3 class="fontTitle" > Total: ${acum}$ </h3>
     <button id="btnañadir" type="submit" class="btn bg-dark mt-3 text-white">Añadir a mi pedido</button>
