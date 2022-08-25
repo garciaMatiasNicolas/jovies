@@ -163,6 +163,7 @@ btnPedir.addEventListener("click", ()=> {
         title: 'Dejanos tus datos',
         text: "Nos estaremos comunicando con vos para darte el status de tu pedido",
         icon: 'question',
+        iconColor:"#ff0000",
         input: "text",
         inputLabel: "Tu nombre y apellido",
         confirmButtonColor: ' #ff0000',
@@ -170,16 +171,20 @@ btnPedir.addEventListener("click", ()=> {
       }).then((result) => {
         if (result.isConfirmed) {
           Swal.fire({
+            title: 'Dejanos tus datos',
             input: "text",
             inputLabel: "Tu numero de telefono",
             confirmButtonText: 'Enviar',
             icon: 'question',
+            iconColor:"#ff0000",
+            confirmButtonColor: ' #ff0000',
         }).then((result2)=> {
             if (result2.isConfirmed){
                 Swal.fire({
                     title:"Gracias por comprar en Jovies",
                     text: "Tu compra ha sido confirmada, nos estaremos comunicando con vos para darte el status de tu pedido",
                     icon:"success",
+                    iconColor:"#ff0000",
                     confirmButtonColor: ' #ff0000',
                 })
                 carrito.splice(0, carrito.length);
