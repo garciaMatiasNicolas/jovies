@@ -1,0 +1,76 @@
+{
+  "hamburguesas" :  [
+        {
+            "id" : "joe",   
+            "nombre" : "Fat Joe", 
+            "descripcion" : "Ingredientes: Triple medallon de carne, cheddar, panceta, salsa jovie, mayonesa y cebolla caramelizada ", 
+            "precio"  : 1100, 
+            "imagen" : "../img/joe.png"
+        },
+        {
+            "id" : "lovie" , 
+            "nombre" : "Fat Lovie", 
+            "descripcion" : "Ingredientes: Doble Medallon de carne, huevo, lechuga, tomate, salsa jovie, mayonesa, panceta y cheddar", 
+            "precio" : 1150, 
+            "imagen" : "../img/lovieMenu.png"
+
+        },
+        {
+            "id" : "rita" , 
+            "nombre" : "Rita's (Veggie)", 
+            "descripcion" : "Ingredientes: Un medallon de soja texturizada, pepinillos, tomate. lechuga, cheddar y salsa jovie ", 
+            "precio" : 1200, 
+            "imagen" : "../img/rita.png"
+
+        },
+        {
+            "id" : "dexter" , 
+            "nombre" : "Dexterino", 
+            "descripcion" : "Ingredientes: Doble medallon de carne, extra panceta, cheddar y salsa jovie ", 
+            "precio" : 1150, 
+            "imagen" : "../img/dexterino.png"
+
+        },
+        {
+            "id" : "harrison" , 
+            "nombre" :  "Harrison (Kids)", 
+            "descripcion" : "Ingredientes: una hamburguesa simple con cheddar y salsa jovie ", 
+            "precio" : 750, 
+            "imagen" : "../img/harrison.png"
+
+        },
+        {
+            "id" : "fatista" , 
+            "nombre" : "Fatista", 
+            "descripcion" : "Ingredientes: Cuadruple medallon de carne,queso roquefort, salsa jovie, cebolla caramelizada, panceta y lechuga", 
+            "precio" : 1250, 
+            "imagen" : "../img/fatist.png"
+
+        },
+        {
+            "id" : "debras" , 
+            "nombre" : "Debra 's", 
+            "descripcion" :"Ingredientes: Un medallon de carne de 150gr, lechuga, pan con semillas, cheddar y cebolla crispy y mayonesa", 
+            "precio" :1050, 
+            "imagen" :"../img/debras.png"
+
+        },
+        {
+            "id" : "doakes" , 
+            "nombre" :"Doakes", 
+            "descripcion" :"Ingredientes: Pan negro, un medallon de carne, lechuga, tomate, cebolla, mayonesa, salsa jovie y pepinillos ", 
+            "precio" :1200, 
+            "imagen" :"../img/doake.png"
+
+        },
+        {
+            "id" : "masuka" , 
+            "nombre" :"Masuka (Kids)", 
+            "descripcion" : "Ingredientes: Pan, un medallon de pollo, lechuga, tomate, cheddar y panceta", 
+            "precio" :850, 
+            "imagen" :"../img/masuka.png"
+
+        }
+    ]
+
+}

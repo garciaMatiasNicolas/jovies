@@ -1,6 +1,5 @@
 // ARRAYS Y VARIABLES //
 
-let pollos = [];
 let carrito = JSON.parse(localStorage.getItem("carritoCompras")) || [] ;
 let botonCarrito = document.getElementById("btnCarrito1");
 let total = document.getElementById("modal-footer1");
@@ -8,25 +7,14 @@ let btnVaciar = document.getElementById("btnVaciar2");
 let modalCarrito = document.getElementById("modalBody2");
 let btnPedir = document.getElementById("btnPedir");
 
-// CONSTRUCTORES //
 
-class Pollo {
-    constructor (id, nombre, descripcion, precio, imagen){
-        this.orden = pollos.length;
-        this.id = id;
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.precio = precio;
-        this.imagen = imagen;
-    }
-}
+// FETCH OBJETOS //
 
-// OBJETOS //
-
-const iceTruck = new Pollo ("ice", "Ice Truck bucket", "Contiene: 6 alitas, 6 pechugas y dip de salsa barbacoa", 1250, "../img/iceTruck.png");
-const trinity = new Pollo ("trinity", "Trinity bucket", "Contiene: 6 alitas, 3 patitas, 7 pechugas y dip de salsa jovie", 1250, "../img/trinity.png");
-const tray = new Pollo ("dooms", "Dooms Day Tray",  "Contiene:  2 patitas y 2 pechugas mas dos panes para acompañar", 750, "../img/trayPollo2.png")
-pollos.push(trinity, iceTruck, tray)
+fetch("../json/pollos.json")
+.then(response => response.json())
+.then ((data) => {
+    imprimir(data.pollos);
+})
 
 // PLANTILLAS //
 
@@ -96,8 +84,9 @@ function armar(){
     section.appendChild(armaBucket);
 }
 armar()
-function imprimir(){
-    pollos.forEach((element)=> {
+
+function imprimir(array){
+   array.forEach((element)=> {
         let producto = document.getElementById("sectionPollos");
         let pollo = document.createElement("div");
         pollo.innerHTML=
@@ -154,7 +143,7 @@ function imprimir(){
         })
     })
 }
-imprimir();
+
 function ver(array){
     
     let plantilla = ``; 
@@ -274,12 +263,8 @@ function sumar2(){
     let papas = document.getElementById("papas");
     let bebida = document.getElementById("bebida");
     acum =  acum + (pechuga*100) + (alas*100) + (muslo*100) + (patas*100);
-    if (papas.checked){
-        acum = acum + 200
-    } 
-    if (bebida.checked){
-        acum = acum + 200
-    }
+    papas.checked && (acum = acum + 200);
+    bebida.checked && (acum = acum + 200);
     footer.innerHTML =`<h3 class="fontTitle" > Total: ${acum}$ </h3>
     <button id="btnañadir" type="submit" class="btn bg-dark mt-3 text-white">Añadir a mi pedido</button>
     `

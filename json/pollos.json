@@ -1,0 +1,20 @@
+{
+        "pollos" :  [
+                        {
+                            "id" : "ice",   
+                            "nombre" :"Ice Truck bucket", 
+                            "descripcion" : "Contiene: 6 alitas, 6 pechugas y dip de salsa barbacoa", 
+                            "precio"  : 1250, 
+                            "imagen" : "../img/iceTruck.png"
+                        },
+                        {
+                            "id" : "trinity" , 
+                            "nombre" : "Trinity bucket", 
+                            "descripcion" : "Contiene: 6 alitas, 3 patitas, 7 pechugas y dip de salsa jovie", 
+                            "precio" : 1250, 
+                            "imagen" : "../img/trinity.png"
+                
+                        }
+                        
+                    ]
+    }

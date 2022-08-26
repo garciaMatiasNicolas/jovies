@@ -1,6 +1,5 @@
 // ARRAYS Y VARIABLES //
 
-let hamburguesas = [];
 let carrito = JSON.parse(localStorage.getItem("carritoCompras")) || [] ;
 let total = document.getElementById("modal-footer");
 let modalCarrito = document.getElementById("modalBody");
@@ -9,36 +8,18 @@ let btnVaciar = document.getElementById("btnVaciar");
 let btnPedir = document.getElementById("btnEnd");
 let div = document.getElementById("loader");
 
-// CONSTRUCTORES //
+// FETCH OBJETOS // 
 
-class Hamburguesa {
-    constructor (id, nombre, descripcion, precio, imagen){
-        this.orden = hamburguesas.length;
-        this.id = id;
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.precio = precio;
-        this.imagen = imagen;
-    } 
-}
-
-// OBJETOS //
-
-const fatJoe = new Hamburguesa ("joe", "Fat Joe", "Ingredientes: Triple medallon de carne, cheddar, panceta, salsa jovie, mayonesa y cebolla caramelizada ", 1300, "../img/joe.png");
-const fatLovie = new Hamburguesa ("lovie", "Fat Lovie", "Ingredientes: Doble Medallon de carne, huevo, lechuga, tomate, salsa jovie, mayonesa, panceta y cheddar", 1150, "../img/lovieMenu.png");
-const rita = new Hamburguesa ("rita", "Rita's (Veggie)", "Ingredientes: Un medallon de soja texturizada, pepinillos, tomate. lechuga, cheddar y salsa jovie ", 1200, "../img/rita.png");
-const dexterino = new Hamburguesa ("dexter", "Dexterino", "Ingredientes: Doble medallon de carne, extra panceta, cheddar y salsa jovie ", 1150, "../img/dexterino.png");
-const harrison = new Hamburguesa ("harrison", "Harrison (Kids)", "Ingredientes: una hamburguesa simple con cheddar y salsa jovie ", 750, "../img/harrison.png");
-const fatista = new Hamburguesa ("fatista", "Fatista", "Ingredientes: Cuadruple medallon de carne,queso roquefort, salsa jovie, cebolla caramelizada, panceta y lechuga", 1400, "../img/fatist.png");
-const debras = new Hamburguesa ("debras", "Debra 's", "Ingredientes: Un medallon de carne de 150gr, lechuga, pan con semillas, cheddar y cebolla crispy y mayonesa", 1200, "../img/debras.png");
-const doakes = new Hamburguesa ("doakes", "Doakes", "Ingredientes: Pan negro, un medallon de carne, lechuga, tomate, cebolla, mayonesa, salsa jovie y pepinillos ", 1200, "../img/doake.png");
-const masuka = new Hamburguesa ("masuka", "Masuka (Kids)", "Ingredientes: Pan, un medallon de pollo, lechuga, tomate, cheddar y panceta", 1500, "../img/masuka.png")
-hamburguesas.push(fatJoe, fatLovie, dexterino, harrison, fatista, rita, doakes, debras, masuka );
+fetch("../json/hamburguesas.json")
+.then(response => response.json())
+.then((data)=>{
+   print(data.hamburguesas)
+})
 
 // PLANTILLAS //
-function print(){
 
-    hamburguesas.forEach((element)=> {
+function print (array){
+    array.forEach((element)=> {
         let producto = document.getElementById("sectionHamburguesas");
         let burguer = document.createElement("div");
         burguer.innerHTML=
@@ -59,32 +40,34 @@ function print(){
                                 <img class="imgBurguers mb-3" src="${element.imagen}" alt="${element.nombre}">
                                 <p class="fontP">${element.descripcion}</p>
                             </div>
-                            <div class="modal-body">
-                                <h2 class="fontModal">¿Desea agregar esto a su combo?</h2>
-                                <div class="d-flex  justify-content-evenly w-50 mt-2">
-                                    <div class="d-flex flex-column justify-content-between align-items-center w-100">
-                                        <label for="bebidas">Gaseosa($200)</label>
-                                        <input type=checkbox id="gaseosa">
+                            <form>
+                                <div class="modal-body">
+                                    <h2 class="fontModal">¿Desea agregar esto a su combo?</h2>
+                                    <div class="d-flex  justify-content-evenly w-50 mt-2">
+                                        <div class="d-flex flex-column justify-content-between align-items-center w-100">
+                                            <label for="bebidas">Gaseosa($200)</label>
+                                            <input type=checkbox id="gaseosa${element.id}">
+                                        </div>
+                                        <div class="d-flex flex-column justify-content-between align-items-center w-100">  
+                                            <label for="">Papas($200)</label>
+                                            <input type=checkbox id="papas${element.id}">
+                                        </div>
                                     </div>
-                                    <div class="d-flex flex-column justify-content-between align-items-center w-100">  
-                                        <label for="">Papas($200)</label>
-                                        <input type=checkbox id="papas">
-                                    </div>
+                                    <button id="btnCalcular${element.id}" type="button" class="btn bg-dark mt-4 ms-2 text-white">Calcular</button>
+                                    <button id="btnReiniciar${element.id}" type="submit" class="btn bg-dark mt-4 ms-2 text-white">Reiniciar</button>
                                 </div>
-                                <h2 class="fontModal mt-5">Alguna observacion que quieras agregar a tu hamburguesa</h2>
-                                <textarea class="w-50 h-100" id="obs-${element.id}" placeholder="Escribe aqui.."></textarea>
-                            </div>
-                            <div class="modal-footer d-flex justify-content-between" id="modalF">
-                                <h2 class="fontTitle">Precio: ${element.precio}$</h2>
-                                <button id="btn-${element.id}" type="button" class="btns btn btnColor text-white" data-bs-dismiss="modal" aria-label="Close">Añadir a mi pedido</button>
-                            </div>
+                                <div class="modal-footer d-flex justify-content-between" id="modalF${element.id}">
+                                    <h2 class="fontTitle">Precio: ${element.precio}$</h2>
+                                    <button type="submit" id="btn-${element.id}1" class="btns btn bg-dark text-white" data-bs-dismiss="modal" aria-label="Close">Añadir a mi pedido</button>
+                                </div>
+                            </form>    
                         </div>
                     </div>
                     </div>
                 </div>`;
         producto.appendChild(burguer);
-        let btnAdd = document.getElementById(`btn-${element.id}`);
-        btnAdd.addEventListener("click", () => {
+        let btnAdd1 = document.getElementById(`btn-${element.id}1`);
+        btnAdd1.addEventListener("click", () => {
             agregarCarrito(element)
             Toastify({
                 text: `${element.nombre} agregado`,
@@ -93,10 +76,11 @@ function print(){
                     background: "black",
                   }
                 }).showToast();
-        });
+        })
+        let btnCalcular2 = document.getElementById(`btnCalcular${element.id}`);
+        btnCalcular2.addEventListener("click", () =>{sumar2(array)});
     })
 }
-
 
 function ver(array){
     let plantilla = ``; 
@@ -122,7 +106,6 @@ function ver(array){
     })
 }
 
-
 // BOTONES Y FUNCIONES// 
 
 function agregarCarrito(producto){
@@ -145,6 +128,51 @@ function sumar(array){
         <div class="mt-3"> <h3 class="fontTitle">Total: ${acum}$ </div>
     </div>`
     acum === 0 ? carritoVacio() :  modalCarrito.appendChild(div);
+}
+
+function sumar2(array){
+    array.forEach((element)=>{
+        let papas = document.getElementById(`papas${element.id}`);
+        let bebida = document.getElementById(`gaseosa${element.id}`);
+        let modalF = document.getElementById(`modalF${element.id}`);
+        if(papas.checked){
+            element.precio = element.precio + 200
+            modalF.innerHTML = `
+            <h2 class="fontTitle">Precio: ${element.precio}$</h2>
+                            <button id="btn-${element.id}" type="submit" class="btns btn bg-dark text-white" data-bs-dismiss="modal" aria-label="Close">Añadir a mi pedido</button>
+            `
+            let btnAdd = document.getElementById(`btn-${element.id}`);
+            btnAdd.addEventListener("click", () => {
+                agregarCarrito(element)
+                Toastify({
+                    text: `${element.nombre} agregado`,
+                    duration: 1500,
+                    style: {
+                        background: "black",
+                      }
+                    }).showToast();
+            })
+        }
+        if (bebida.checked){
+            element.precio = element.precio + 200
+            modalF.innerHTML = `
+            <h2 class="fontTitle">Precio: ${element.precio}$</h2>
+                            <button id="btn-${element.id}" type="submit" class="btns btn bg-dark text-white" data-bs-dismiss="modal" aria-label="Close">Añadir a mi pedido</button>
+            `
+            let btnAdd = document.getElementById(`btn-${element.id}`);
+            btnAdd.addEventListener("click", () => {
+                agregarCarrito(element)
+                Toastify({
+                    text: `${element.nombre} agregado`,
+                    duration: 1500,
+                    style: {
+                        background: "black",
+                      }
+                    }).showToast();
+            })
+        }
+    })
+   
 }
 
 btnVaciar.addEventListener("click", ()=> {
@@ -196,11 +224,4 @@ btnPedir.addEventListener("click", ()=> {
       })
 })
 
-const loader = setTimeout(() => {
-    div.innerHTML= "";
-}, 1000)
-
-const products = setTimeout(() => {
-    print()
-},1000  )
 
