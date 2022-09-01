@@ -10,10 +10,10 @@ let btnPedir = document.getElementById("btnPedir");
 
 // FETCH OBJETOS //
 
-fetch("http://localhost:3000/pollos")
+fetch("../db.json")
 .then(response => response.json())
 .then ((data) => {
-    imprimir(data);
+    imprimir(data.pollos);
 })
 
 // PLANTILLAS //

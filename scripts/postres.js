@@ -3,9 +3,9 @@
 // OBJETOS FETCH //
 
 const apiPostres = async () => {
-    const call = await fetch("http://localhost:3000/postres")
+    const call = await fetch("../db.json")
     const products = await call.json()
-    plantilla1(products)
+    plantilla1(products.postres)
 }  
 apiPostres()
 

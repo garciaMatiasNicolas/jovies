@@ -11,9 +11,9 @@ let div = document.getElementById("loader");
 // FETCH OBJETOS //
 
 const funcion = async ()=> {
-   const api = await fetch(" http://localhost:3000/hamburguesas")
+   const api = await fetch("../db.json")
    const data = await api.json()
-   print(data) 
+   print(data.hamburguesas) 
 }
 
 funcion()
