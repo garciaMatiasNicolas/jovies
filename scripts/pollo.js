@@ -149,7 +149,6 @@ function imprimir(array){
 }
 
 function ver(array){
-    
     let plantilla = ``; 
     array.forEach((producto)=> {
 

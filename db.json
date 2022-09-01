@@ -155,7 +155,7 @@
       },
       {
         "id" : "conoCC" , 
-        "name" : "Cono combinado (Chocolate)", 
+        "name" : "Cono combinado", 
         "price" : 250, 
         "image" : "../img/supercono.png"
       },

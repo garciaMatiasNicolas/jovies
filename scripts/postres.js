@@ -1,5 +1,10 @@
 // ARRAYS Y VARIABLES //
 
+let carrito = JSON.parse(localStorage.getItem("carritoCompras")) || [];
+let modalCart = document.getElementById("modalBody3");
+let btnCart = document.getElementById("btnCarrito3");
+let btnVaciar = document.getElementById("btnVaciar3")
+
 // OBJETOS FETCH //
 
 const apiPostres = async () => {
@@ -57,3 +62,56 @@ const plantilla1 = (array)=>{
     });
 }
 
+function ver(array){
+    let plantilla = ``;
+    array.forEach((element)=>{
+        plantilla+= 
+        `
+        <div id="card${element.id}" class="d-flex w-100 justify-content-around align-items-start border-bottom">
+            <img class="imgPedidosModal mb-3" src="${element.image}" alt="">
+            <div class="d-flex w-100 flex-column justify-content-between align-items-start mt-3 ms-3">
+                <h3 class="fontTitle1">Producto: ${element.name}</h3>
+                <h3 class="fontTitle1">Precio: ${element.price}$</h3>
+            </div>  
+            <button id="delete-${element.id}" type="button" class="btns btn bg-transparent text-white mt-4"><img class="iconT" src="../img/trashpng.png"></button>      
+        </div>
+        `
+        modalCart.innerHTML = plantilla;
+    })
+}
+
+// BOTONES Y FUNCIONES //
+
+function agregarCarrito(producto){
+    carrito.push(producto);
+    localStorage.setItem("carritoCompras", JSON.stringify(carrito));
+}
+
+function carritoVacio(){
+    modalCart.innerHTML = `<h3 class="fontTitle1">No has seleccionado ningun producto</h3>`
+}
+
+function vaciar(){
+    carrito.splice(0, carrito.length);
+    localStorage.removeItem("carritoCompras")
+    ver(carrito)
+}
+
+function sumar(array){
+    let acum = 0
+    array.forEach((element => {
+        acum += (element.price)
+    }))
+    let div = document.createElement("div");
+    div.innerHTML = 
+    `<div class="w-100 d-flex justify-content-between align-items-center">
+        <div class="mt-3"> <h3 class="fontTitle">Total: ${acum}$ </div>
+    </div>`
+    acum === 0 ? carritoVacio() :  modalCart.appendChild(div);
+}
+
+btnCart.addEventListener("click", () => {
+    ver(carrito);
+    sumar(carrito)
+});
+btnVaciar.addEventListener("click", vaciar);

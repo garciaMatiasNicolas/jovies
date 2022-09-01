@@ -1,5 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap');
 
+.background{
+    background-color: rgba(0, 0, 0, 0.911);
+    position: relative;
+    min-height: 100vh;
+    padding-bottom: 25rem;
+}
+
 .btnAgregar{
     background-color: black;
 }
@@ -64,9 +71,11 @@
     border: 1px solid white;
 }
 
-.background{
-    background-color: rgba(0, 0, 0, 0.911);
-    height: 100%;
+footer{
+   bottom: 0;
+   width: 100%;
+   position: absolute;
+   margin-top: auto;
 }
 
 .navProductos{
@@ -113,15 +122,10 @@
     height: 100%;
 }
 
-footer{
-    bottom: 0;
-}
-
 .observacion{
  width: 90%;
  height: 8rem;
 }
-
 
 .botonCart{
     width: 11rem;
