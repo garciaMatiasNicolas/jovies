@@ -92,19 +92,16 @@ function ver(){
                 <h3 class="fontTitle1">Producto: ${element.name}</h3>
                 <h3 class="fontTitle1">Precio: ${element.price}$</h3>
             </div>  
-            <button id="delete-${element.id}" type="button" class="btns btn bg-transparent text-white mt-4"><img class="iconT" src="../img/trashpng.png"></button>      
+            <button id="delete-${element.id}" type="button" class="btn bg-transparent text-white mt-4 btnX"><img class="iconT" src="../img/trashpng.png"></button>      
         </div>
         `
         modalCarrito.innerHTML = plantilla;
-        let btn = document.getElementById(`delete-${element.id}`);
-        btn.addEventListener("click", ()=> {
-            eliminarProducto(element.id)
-            ver()
-        })
+        
     })
 }
 
 // BOTONES Y FUNCIONES// 
+
 function eliminarProducto(id){
     const item = carrito.find((prod)=> prod.id === id)
     const indice = carrito.indexOf(item)
