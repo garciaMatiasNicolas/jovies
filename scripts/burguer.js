@@ -80,9 +80,10 @@ function print(array){
     })
 }
 
-function ver(array){
+
+function ver(){
     let plantilla = ``; 
-    array.forEach((element)=> {
+    carrito.forEach((element)=> {
         plantilla+= 
         `
         <div id="card${element.id}" class="d-flex w-100 justify-content-around align-items-start border-bottom">
@@ -95,16 +96,21 @@ function ver(array){
         </div>
         `
         modalCarrito.innerHTML = plantilla;
-        let trash = document.getElementById(`delete-${element.id}`);
-        trash.addEventListener("click", () => {
-            let index = carrito.indexOf(element);
-            carrito.splice(0, index);
-            console
+        let btn = document.getElementById(`delete-${element.id}`);
+        btn.addEventListener("click", ()=> {
+            eliminarProducto(element.id)
+            ver()
         })
     })
 }
 
 // BOTONES Y FUNCIONES// 
+function eliminarProducto(id){
+    const item = carrito.find((prod)=> prod.id === id)
+    const indice = carrito.indexOf(item)
+    carrito.splice(indice, 1)
+    localStorage.setItem("carritoCompras", JSON.stringify(carrito));
+}
 
 function agregarCarrito(producto){
     carrito.push(producto)
@@ -128,10 +134,10 @@ function sumar(array){
 btnVaciar.addEventListener("click", ()=> {
     carrito.splice(0, carrito.length);
     localStorage.removeItem("carritoCompras")
-    ver(carrito)
+    ver()
 })
 botonCarrito.addEventListener("click", () => {
-    ver(carrito);
+    ver();
     sumar(carrito);
 });
 btnPedir.addEventListener("click", ()=> {

@@ -236,7 +236,7 @@ function carritoVacio(){
 function sumar(array){
     let acum = 0
     array.forEach((producto => {
-        acum += (producto.precio)
+        acum += (producto.price)
     }))
     let div = document.createElement("div");
     div.innerHTML = 

@@ -1,6 +1,12 @@
-/* CONSTRUCTOR */
+// VARIABLES //
 
 const cards = [];
+let sectionS = document.getElementById("sucursales");
+let input = document.getElementById("floatingInputValue");
+let section = document.getElementById("indexCards");
+let celdas = document.getElementsByTagName("td");
+
+// CONSTRUCTOR //
 
 class Card {
     constructor (id, nombre, imagen, descripcion, boton){
@@ -12,7 +18,8 @@ class Card {
     }
 }
 
-/* VAR - CARDS */
+
+// CARDS //
 
 const card1 = new Card ("burguer", "Nueva Fat Lovie!", "./img/fondo1.png", "Llevando el combo de la nueva fat lovie, podes llevarte un combo fat joe con un 50% OFF!", "Quiero mi combo!");
 cards.push(card1);
@@ -27,9 +34,17 @@ cards.push(card5);
 const card6 = new Card ("arma", "Arma la tuya!", "./img/jovie.jpg", "¿Ninguna de nuestras opciones te convencio? No te preocupes, tenemos la solucion. Arma tu Jovie como vos la desees! ", "Quiero mi Jovie");
 cards.push(card6);
 
-/* PLANTILLA */ 
+// SUCURSALES FETCH //
 
-let section = document.getElementById("indexCards");
+const sucursales = async() => {
+    const data = await fetch("db.json");
+    const response = await data.json()
+    mostrarDatos(response.sucursales)
+    
+}
+sucursales()
+
+// PLANTILLAS //
 
 for (let element of cards){
     
@@ -51,3 +66,23 @@ for (let element of cards){
     section.appendChild(row);
 }
 
+const mostrarDatos = (array)=> {
+    plantilla = ``
+    array.forEach((element)=>{
+        plantilla+= `
+        <tr>
+            <td class="text-white fontTitle">${element.name} - ${element.adress}</td>
+        </tr>`
+    })
+    sectionS.innerHTML = plantilla
+}
+
+
+input.addEventListener("keyup", (e)=>{
+    let texto = e.target.value;
+    let er = new RegExp (texto, "i");
+    for(let i=0; i<celdas.length; i++){
+        let valores = celdas[i];
+        er.test(valores.innerHTML) ? valores.classList.remove("ocultar"): valores.classList.add("ocultar")
+    }
+})

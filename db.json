@@ -165,6 +165,53 @@
         "price" : 250, 
         "image" : "../img/cono-combinado.png"
       }
+    ],
+    "sucursales": [
+      {
+        "id": 1,
+        "name": "Sucursal Cordoba (Córdoba) 1",
+        "adress": "General Paz 134"
+      },
+      {
+        "id": 2,
+        "name": "Sucursal Cordoba (Cordoba) 2",
+        "adress": "Jacinto Rios Y David Luque"
+      },
+      {
+        "id": 3,
+        "name": "Sucursal Cordoba (Cordoba) 3",
+        "adress": "Av. Rafael Núñez 4764"
+      },
+      {
+        "id": 4,
+        "name": "Sucursal Buenos Aires (CABA) 1",
+        "adress": "Av. Belgrano 690"
+      },
+      {
+        "id": 5,
+        "name": "Sucursal Buenos Aires (CABA) 2",
+        "adress": "Av. Callao 1062"
+      },
+      {
+        "id": 6,
+        "name": "Sucursal Buenos Aires (CABA) 3",
+        "adress": "Bonpland 2500 "
+      },
+      {
+        "id": 7,
+        "name": "Sucursal Santa Fe (Rosario) 1",
+        "adress": "Vera Mujica 732"
+      },
+      {
+        "id": 8,
+        "name": "Sucursal Santa Fe (Rosario) 2",
+        "adress": "San Lorenzo 5823"
+      },
+      {
+        "id": 9,
+        "name": "Sucursal Entre rios (Parana) 1",
+        "adress": "Peat. San Martín 1020"
+      }
     ]
 
     
