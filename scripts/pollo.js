@@ -164,6 +164,7 @@ function ver(array){
         </div>
         `
         modalCarrito.innerHTML = plantilla;
+        
     })
 }
 

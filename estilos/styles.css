@@ -139,6 +139,10 @@ footer{
     align-items: center;
 }
 
+.btnX{
+    background-color: transparent !important;
+}
+
 .fontCart{
     font-family: Poppins;
     font-weight: 400;

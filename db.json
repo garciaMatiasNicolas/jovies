@@ -90,7 +90,7 @@
     },
     {
       "id" : "bay" , 
-      "name" : "Bay Harbor bucket", 
+      "name" : "Bay Harbor Bucket", 
       "description" : "Contiene: 2 alitas, 4 patitas, 4 pechugas, 6 muslitos y dip de salsa jovie", 
       "price" : 1350, 
       "image" : "../img/bayharbor.png"
@@ -104,7 +104,7 @@
     },
     {
       "id" : "santa" , 
-      "name" : "Santa Muerte bucket", 
+      "name" : "Santa Muerte", 
       "description" : "Contiene: 6 pechugas, 2 muslitos, 3 patitas y dip de salsa jovie (EXTRA picante el pollo)", 
       "price" : 1350, 
       "image" : "../img/santaM.png"

@@ -92,32 +92,37 @@ function ver(){
                 <h3 class="fontTitle1">Producto: ${element.name}</h3>
                 <h3 class="fontTitle1">Precio: ${element.price}$</h3>
             </div>  
-            <button id="delete-${element.id}" type="button" class="btn bg-transparent text-white mt-4 btnX"><img class="iconT" src="../img/trashpng.png"></button>      
+            <button id="deletes-${element.id}" type="button" class="btn text-white mt-4 btnX"><img class="iconT" src="../img/trashpng.png"></button>      
         </div>
         `
         modalCarrito.innerHTML = plantilla;
         
     })
+    carrito.forEach((element)=>{
+        document.getElementById(`deletes-${element.id}`).addEventListener("click", ()=>{
+           let item = carrito.find((prod)=> prod.id === element.id);
+           let indice = carrito.indexOf(item);
+           carrito.splice(indice, 1);
+           let card = document.getElementById(`card${element.id}`);
+           card.remove()
+           localStorage.setItem("carritoCompras", JSON.stringify(carrito))
+        })
+    })
 }
 
 // BOTONES Y FUNCIONES// 
-
-function eliminarProducto(id){
-    const item = carrito.find((prod)=> prod.id === id)
-    const indice = carrito.indexOf(item)
-    carrito.splice(indice, 1)
-    localStorage.setItem("carritoCompras", JSON.stringify(carrito));
-}
 
 function agregarCarrito(producto){
     carrito.push(producto)
     localStorage.setItem("carritoCompras", JSON.stringify(carrito));
 }
+
 function carritoVacio(){
     modalCarrito.innerHTML = `<h3 class="fontTitle1">No has seleccionado ningun producto</h3>`
 }
+
+let acum = 0
 function sumar(array){
-    let acum = 0
     array.forEach((element => {
         acum += (element.price)
     }))
@@ -128,15 +133,18 @@ function sumar(array){
     </div>`
     acum === 0 ? carritoVacio() :  modalCarrito.appendChild(div);
 }
+
 btnVaciar.addEventListener("click", ()=> {
     carrito.splice(0, carrito.length);
     localStorage.removeItem("carritoCompras")
     ver()
 })
+
 botonCarrito.addEventListener("click", () => {
     ver();
     sumar(carrito);
 });
+
 btnPedir.addEventListener("click", ()=> {
     Swal.fire({
         title: 'Dejanos tus datos',
