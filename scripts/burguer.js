@@ -1,7 +1,8 @@
 // ARRAYS Y VARIABLES //
-let hamburguesas = [];
+
 let carrito = JSON.parse(localStorage.getItem("carritoCompras")) || [] ;
-let total = document.getElementById("modal-footer");
+let total = document.getElementById("precioTotal");
+let precio = document.getElementById("precio")
 let modalCarrito = document.getElementById("modalBody");
 let botonCarrito = document.getElementById("btnCarrito");
 let btnVaciar = document.getElementById("btnVaciar");
@@ -15,7 +16,6 @@ const funcion = async ()=> {
    const data = await api.json()
    print(data.hamburguesas) 
 }
-
 funcion()
 
 // PLANTILLAS //
@@ -40,22 +40,9 @@ function print(array){
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <img class="imgBurguers mb-3" src="${element.image}" alt="${element.name}">
-                                <p class="fontP">${element.description}</p>
                             </div>
                             <div class="modal-body">
-                                <h2 class="fontModal">¿Desea agregar esto a su combo?</h2>
-                                <div class="d-flex  justify-content-evenly w-50 mt-2">
-                                    <div class="d-flex flex-column justify-content-between align-items-center w-100">
-                                        <label for="bebidas">Gaseosa($200)</label>
-                                        <input type=checkbox id="gaseosa">
-                                    </div>
-                                    <div class="d-flex flex-column justify-content-between align-items-center w-100">  
-                                        <label for="">Papas($200)</label>
-                                        <input type=checkbox id="papas">
-                                    </div>
-                                </div>
-                                <h2 class="fontModal mt-5">Alguna observacion que quieras agregar a tu hamburguesa</h2>
-                                <textarea class="w-50 h-100" id="obs-${element.id}" placeholder="Escribe aqui.."></textarea>
+                            <p class="fontP">${element.description}</p>
                             </div>
                             <div class="modal-footer d-flex justify-content-between" id="modalF">
                                 <h2 class="fontTitle">Precio: ${element.price}$</h2>
@@ -70,7 +57,7 @@ function print(array){
         btnAdd.addEventListener("click", () => {
             agregarCarrito(element)
             Toastify({
-                text: `${element.name} agregado`,
+                text: `Hamburguesa ${element.name} agregado`,
                 duration: 1500,
                 style: {
                     background: "black",
@@ -80,9 +67,9 @@ function print(array){
     })
 }
 
-
 function ver(){
     let plantilla = ``; 
+    //Imprimir en el modal porductos seleccionados
     carrito.forEach((element)=> {
         plantilla+= 
         `
@@ -96,8 +83,8 @@ function ver(){
         </div>
         `
         modalCarrito.innerHTML = plantilla;
-        
     })
+    // Agregar un evento a cada boton de eliminar de cada producto
     carrito.forEach((element)=>{
         document.getElementById(`deletes-${element.id}`).addEventListener("click", ()=>{
            let item = carrito.find((prod)=> prod.id === element.id);
@@ -106,8 +93,11 @@ function ver(){
            let card = document.getElementById(`card${element.id}`);
            card.remove()
            localStorage.setItem("carritoCompras", JSON.stringify(carrito))
+           ver()
         })
     })
+    // Calcular total de los productos seleccionados
+    carrito.length === 0 ? carritoVacio() : total.innerHTML = carrito.reduce((acum, element) => acum + element.price, 0);
 }
 
 // BOTONES Y FUNCIONES// 
@@ -118,31 +108,18 @@ function agregarCarrito(producto){
 }
 
 function carritoVacio(){
-    modalCarrito.innerHTML = `<h3 class="fontTitle1">No has seleccionado ningun producto</h3>`
-}
-
-let acum = 0
-function sumar(array){
-    array.forEach((element => {
-        acum += (element.price)
-    }))
-    let div = document.createElement("div");
-    div.innerHTML = 
-    `<div class="w-100 d-flex justify-content-between align-items-center">
-        <div class="mt-3"> <h3 class="fontTitle">Total: ${acum}$ </div>
-    </div>`
-    acum === 0 ? carritoVacio() :  modalCarrito.appendChild(div);
+    modalCarrito.innerHTML = `<h3 class="fontTitle1">No has seleccionado ningun producto</h3>`;
+    precio.className="d-none"
 }
 
 btnVaciar.addEventListener("click", ()=> {
     carrito.splice(0, carrito.length);
-    localStorage.removeItem("carritoCompras")
-    ver()
+    localStorage.removeItem("carritoCompras");
+    ver();
 })
 
 botonCarrito.addEventListener("click", () => {
     ver();
-    sumar(carrito);
 });
 
 btnPedir.addEventListener("click", ()=> {

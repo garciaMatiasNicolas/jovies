@@ -75,6 +75,13 @@
     ],
     "pollos": [
     {
+        "id" : "jovie" , 
+        "name" : "Bucket Jovie", 
+        "description" : "Contiene: 6 pechugas, 2 muslitos, 3 patitas, 4 alitas y dip de salsa jovie y dip de barbacoa", 
+        "price" : 1350, 
+        "image" : "../img/bucketArma.png"
+    },
+    {
       "id" : "ice",   
       "name" :"Ice Truck bucket", 
       "description" : "Contiene: 6 alitas, 6 pechugas y dip de salsa barbacoa", 
